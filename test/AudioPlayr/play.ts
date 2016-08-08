@@ -4,16 +4,21 @@
 /// <reference path="../utils/MochaLoader.ts" />
 /// <reference path="../utils/mocks.ts" />
 
-mochaLoader.addTest("still plays the sound if sounds are muted", (): void => {
+// var done = (sound?: any) => { chai.expect(sound.paused).to.equal(false); };
+mochaLoader.addTest("still plays the sound if sounds are muted", (done): void => {
     // Arrange
     var AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.setMutedOn();
-    var sound = AudioPlayer.play(mocks.mockSoundName);
+    var sound;
+    sound = AudioPlayer.play(mocks.mockSoundName);
 
     // Assert
-    chai.expect(sound.paused).to.equal(false);
+    setTimeout(() => {
+        chai.expect(sound.paused).to.equal(false);
+        done();
+    }, 1);
 });
 
 mochaLoader.addTest("throws an error", (): void => {
