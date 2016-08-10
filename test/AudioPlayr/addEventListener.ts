@@ -4,7 +4,6 @@
 /// <reference path="../utils/MochaLoader.ts" />
 /// <reference path="../utils/mocks.ts" />
 
-// var done = (num?: any) => { chai.expect(num).to.equal(1); }
 mochaLoader.addTest("sets up the callback to be called", (done): void => {
     // Arrange
     var AudioPlayer = mocks.mockAudioPlayr();
@@ -14,13 +13,32 @@ mochaLoader.addTest("sets up the callback to be called", (done): void => {
 
     // Act
     AudioPlayer.addEventListener(mocks.mockSoundName, "play", increase);
-    // AudioPlayer.playSound(sound);
-        AudioPlayer.play(mocks.mockSoundName);
+    AudioPlayer.play(mocks.mockSoundName);
 
 
     // Assert
     setTimeout(() => {
         chai.expect(num).to.equal(1);
+        done();
+    }, 1);
+});
+
+mochaLoader.addTest("does not call the callback before the sound is played", (done): void => {
+    // Arrange
+    var AudioPlayer = mocks.mockAudioPlayr();
+    var sound = AudioPlayer.library[mocks.mockSoundName];
+    var num = 0;
+    var increase = () => { num += 1; }
+
+    // Act
+    AudioPlayer.addEventListener(mocks.mockSoundName, "play", increase);
+    var watcher = num;
+    AudioPlayer.play(mocks.mockSoundName);
+
+
+    // Assert
+    setTimeout(() => {
+        chai.expect(watcher).to.equal(0);
         done();
     }, 1);
 });

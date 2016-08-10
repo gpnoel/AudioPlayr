@@ -16,6 +16,17 @@ mochaLoader.addTest("sets the volume to 0 if sounds are muted", (): void => {
     chai.expect(sound.volume).to.equal(0);
 });
 
+mochaLoader.addTest("sets the volume to 1 if sounds are not muted", (): void => {
+    // Arrange
+    var AudioPlayer = mocks.mockAudioPlayr();
+
+    // Act
+    var sound = AudioPlayer.playLocal(mocks.mockSoundName);
+
+    // Assert
+    chai.expect(sound.volume).to.equal(1);
+});
+
 mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type number)", (): void => {
     // Arrange
     var AudioPlayer = mocks.mockAudioPlayr({
