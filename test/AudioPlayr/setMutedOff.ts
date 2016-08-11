@@ -6,13 +6,12 @@
 
 mochaLoader.addTest("unmutes if the sound is playing", (done): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
-    const sound = AudioPlayer.library[mocks.mockSoundName];
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
-    AudioPlayer.play(mocks.mockSoundName);
+    const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
     setTimeout(() => {
-        AudioPlayer.setMutedOff(AudioPlayer);
+        AudioPlayer.setMutedOff();
 
         // Assert
         chai.expect(sound.volume).to.equal(1);
@@ -22,11 +21,10 @@ mochaLoader.addTest("unmutes if the sound is playing", (done): void => {
 
 mochaLoader.addTest("unmutes if the sound is paused", (done): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
-    const sound = AudioPlayer.library[mocks.mockSoundName];
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
-    AudioPlayer.playTheme(mocks.mockSoundName);
+    const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
     setTimeout(() => {
         AudioPlayer.pauseTheme();
         AudioPlayer.setMutedOff();

@@ -9,14 +9,13 @@
         "AudioPlayr/addEventImmediate.ts",
         "AudioPlayr/addEventListener.ts",
         "AudioPlayr/clearTheme.ts",
-        "AudioPlayr/pauseSound.ts",
+        "AudioPlayr/pauseAll.ts",
+        "AudioPlayr/pauseTheme.ts",
         "AudioPlayr/play.ts",
         "AudioPlayr/playLocal.ts",
-        "AudioPlayr/playSound.ts",
         "AudioPlayr/playTheme.ts",
         "AudioPlayr/removeEventListeners.ts",
         "AudioPlayr/setMutedOff.ts",
-        "AudioPlayr/setMutedOn.ts",
-        "AudioPlayr/soundStop.ts"
+        "AudioPlayr/setMutedOn.ts"
     ]
 }

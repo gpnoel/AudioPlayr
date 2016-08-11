@@ -4,20 +4,19 @@
 /// <reference path="../utils/MochaLoader.ts" />
 /// <reference path="../utils/mocks.ts" />
 
-mochaLoader.addTest("plays the sound if sounds are muted (commented out)", (done): void => {
+mochaLoader.addTest("pauses the theme (commented out)", (done): void => {
     // paused is undefined in this version of PhantomJS
 
     /*// Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
-    const sound;
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
-    AudioPlayer.setMutedOn();
-    sound = AudioPlayer.play(mocks.mockSoundName);
-
-    // Assert
+    AudioPlayer.playTheme(mocks.mockSoundName);
     setTimeout(() => {
-        chai.expect(sound.paused).to.equal(false);
+        AudioPlayer.pauseTheme();
+
+        // Assert
+        chai.expect(AudioPlayer.getTheme().paused).to.equal(true);
         done();
     }, 1);*/
 
@@ -25,30 +24,22 @@ mochaLoader.addTest("plays the sound if sounds are muted (commented out)", (done
     done();
 });
 
-mochaLoader.addTest("plays the sound if sounds are not muted (commented out)", (done): void => {
+mochaLoader.addTest("doesn't pause a sound that isn't the theme (commented out)", (done): void => {
     // paused is undefined in this version of PhantomJS
 
     /*// Arrange
     const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
-    const sound: HTMLAudioElement;
 
     // Act
-    sound = AudioPlayer.play(mocks.mockSoundName);
-
-    // Assert
+    const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
     setTimeout(() => {
+        AudioPlayer.pauseTheme();
+
+        // Assert
         chai.expect(sound.paused).to.equal(false);
         done();
     }, 1);*/
 
     // remove this once the PhantomJS issue is resolved
     done();
-});
-
-mochaLoader.addTest("throws an error if the sound doesn't exist", (): void => {
-    // Arrange
-    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
-
-    // Assert
-    chai.expect(AudioPlayer.play.bind(AudioPlayer, "X")).to.throw("Unknown name given to AudioPlayr.play: 'X'.");
 });

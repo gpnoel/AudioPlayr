@@ -4,38 +4,48 @@
 /// <reference path="../utils/MochaLoader.ts" />
 /// <reference path="../utils/mocks.ts" />
 
-mochaLoader.addTest("removes the theme from sounds", (): void => {
-    // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
-
-    // Act
-    AudioPlayer.playTheme(mocks.mockSoundName);
-    AudioPlayer.clearTheme();
-
-    // Assert
-    chai.expect(typeof AudioPlayer.sounds[mocks.mockSoundName]).to.equal("undefined");
-});
-
 mochaLoader.addTest("sets the theme to undefined", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.theme).to.equal("undefined");
+    chai.expect(typeof AudioPlayer.getTheme()).to.equal("undefined");
 });
 
 mochaLoader.addTest("sets the themeName to undefined", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.themeName).to.equal("undefined");
+    chai.expect(typeof AudioPlayer.getThemeName()).to.equal("undefined");
+});
+
+mochaLoader.addTest("leaves the theme unchanged if no theme was set", (): void => {
+    // Arrange
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
+
+    // Act
+    AudioPlayer.clearTheme();
+
+    // Assert
+    chai.expect(typeof AudioPlayer.getTheme()).to.equal("undefined");
+});
+
+mochaLoader.addTest("leaves the themeName unchanged if no theme was set", (): void => {
+    // Arrange
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
+
+    // Act
+    AudioPlayer.clearTheme();
+
+    // Assert
+    chai.expect(typeof AudioPlayer.getThemeName()).to.equal("undefined");
 });

@@ -6,47 +6,47 @@
 
 mochaLoader.addTest("sets the theme", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
-    const sound = AudioPlayer.playTheme(mocks.mockSoundName);
+    const sound: HTMLAudioElement = AudioPlayer.playTheme(mocks.mockSoundName);
 
     // Assert
-    chai.expect(AudioPlayer.sounds[mocks.mockSoundName]).to.deep.equal(sound);
+    chai.expect(AudioPlayer.getTheme()).to.deep.equal(sound);
 });
 
 mochaLoader.addTest("sets the loop attribute to true", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
 
     // Assert
-    chai.expect(AudioPlayer.theme.loop).to.equal(true);
+    chai.expect(AudioPlayer.getTheme().loop).to.equal(true);
 });
 
 mochaLoader.addTest("sets the loop attribute to false", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName, false);
 
     // Assert
-    chai.expect(AudioPlayer.theme.loop).to.equal(false);
+    chai.expect(AudioPlayer.getTheme().loop).to.equal(false);
 });
 
 mochaLoader.addTest("uses default getter (of type string)", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {
-            "Sounds": [
+            Sounds: [
                 "Ringtone"
             ],
-            "Themes": [
+            Themes: [
                 mocks.mockSoundName
             ]
         },
@@ -58,25 +58,23 @@ mochaLoader.addTest("uses default getter (of type string)", (): void => {
     AudioPlayer.playTheme();
 
     // Assert
-    chai.expect(AudioPlayer.themeName).to.equal(mocks.mockSoundName);
+    chai.expect(AudioPlayer.getThemeName()).to.equal(mocks.mockSoundName);
 });
 
 mochaLoader.addTest("uses default getter (of type function)", (): void => {
     // Arrange
-    const AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer: AudioPlayr.IAudioPlayr = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {
-            "Sounds": [
+            Sounds: [
                 "Ringtone"
             ],
-            "Themes": [
+            Themes: [
                 mocks.mockSoundName
             ]
         },
-        getThemeDefault: () => {
-            return mocks.mockSoundName;
-        },
+        getThemeDefault: (): string => mocks.mockSoundName,
         ItemsHolder: mocks.mockItemsHoldr()
     });
 
@@ -84,5 +82,5 @@ mochaLoader.addTest("uses default getter (of type function)", (): void => {
     AudioPlayer.playTheme();
 
     // Assert
-    chai.expect(AudioPlayer.themeName).to.equal(mocks.mockSoundName);
+    chai.expect(AudioPlayer.getThemeName()).to.equal(mocks.mockSoundName);
 });
