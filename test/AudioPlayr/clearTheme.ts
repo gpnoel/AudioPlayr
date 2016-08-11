@@ -13,7 +13,7 @@ mochaLoader.addTest("sets the theme to undefined", (): void => {
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.getTheme()).to.equal("undefined");
+    chai.expect(AudioPlayer.getTheme()).to.be.undefined;
 });
 
 mochaLoader.addTest("sets the themeName to undefined", (): void => {
@@ -25,7 +25,7 @@ mochaLoader.addTest("sets the themeName to undefined", (): void => {
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.getThemeName()).to.equal("undefined");
+    chai.expect(AudioPlayer.getThemeName()).to.be.undefined;
 });
 
 mochaLoader.addTest("leaves the theme unchanged if no theme was set", (): void => {
@@ -36,7 +36,7 @@ mochaLoader.addTest("leaves the theme unchanged if no theme was set", (): void =
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.getTheme()).to.equal("undefined");
+    chai.expect(AudioPlayer.getTheme()).to.be.undefined;
 });
 
 mochaLoader.addTest("leaves the themeName unchanged if no theme was set", (): void => {
@@ -47,5 +47,5 @@ mochaLoader.addTest("leaves the themeName unchanged if no theme was set", (): vo
     AudioPlayer.clearTheme();
 
     // Assert
-    chai.expect(typeof AudioPlayer.getThemeName()).to.equal("undefined");
+    chai.expect(AudioPlayer.getThemeName()).to.be.undefined;
 });

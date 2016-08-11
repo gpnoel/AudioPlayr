@@ -18,7 +18,7 @@ mochaLoader.addTest("does not call the callback before the sound is played", (do
     AudioPlayer.play(mocks.mockSoundName);
 
     // Assert
-    setTimeout(() => {
+    setTimeout((): void => {
         chai.expect(watcher).to.equal(0);
         done();
     }, 1);

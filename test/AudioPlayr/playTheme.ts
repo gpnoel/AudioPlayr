@@ -23,7 +23,7 @@ mochaLoader.addTest("sets the loop attribute to true", (): void => {
     AudioPlayer.playTheme(mocks.mockSoundName);
 
     // Assert
-    chai.expect(AudioPlayer.getTheme().loop).to.equal(true);
+    chai.expect(AudioPlayer.getTheme().loop).to.be.true;
 });
 
 mochaLoader.addTest("sets the loop attribute to false", (): void => {
@@ -34,7 +34,7 @@ mochaLoader.addTest("sets the loop attribute to false", (): void => {
     AudioPlayer.playTheme(mocks.mockSoundName, false);
 
     // Assert
-    chai.expect(AudioPlayer.getTheme().loop).to.equal(false);
+    chai.expect(AudioPlayer.getTheme().loop).to.be.false;
 });
 
 mochaLoader.addTest("uses default getter (of type string)", (): void => {

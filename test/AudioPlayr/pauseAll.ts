@@ -12,11 +12,11 @@ mochaLoader.addTest("pauses a theme (commented out)", (done): void => {
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
-    setTimeout(() => {
+    setTimeout((): void => {
         AudioPlayer.pauseAll();
 
         // Assert
-        chai.expect(AudioPlayer.getTheme().paused).to.equal(true);
+        chai.expect(AudioPlayer.getTheme().paused).to.be.true;
         done();
     }, 1);*/
 
@@ -32,11 +32,11 @@ mochaLoader.addTest("pauses a sound (commented out)", (done): void => {
 
     // Act
     const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
-    setTimeout(() => {
+    setTimeout((): void => {
         AudioPlayer.pauseTheme();
 
         // Assert
-        chai.expect(sound.paused).to.equal(false);
+        chai.expect(sound.paused).to.be.false);
         done();
     }, 1);*/
 

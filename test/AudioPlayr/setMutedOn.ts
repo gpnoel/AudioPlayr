@@ -10,7 +10,7 @@ mochaLoader.addTest("mutes if the sound is playing", (done): void => {
 
     // Act
     const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
-    setTimeout(() => {
+    setTimeout((): void => {
         AudioPlayer.setMutedOn();
 
         // Assert
@@ -25,7 +25,7 @@ mochaLoader.addTest("mutes if the sound is paused", (done): void => {
 
     // Act
     const sound: HTMLAudioElement = AudioPlayer.play(mocks.mockSoundName);
-    setTimeout(() => {
+    setTimeout((): void => {
         AudioPlayer.pauseTheme();
         AudioPlayer.setMutedOn();
 
