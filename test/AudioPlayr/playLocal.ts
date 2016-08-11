@@ -6,11 +6,11 @@
 
 mochaLoader.addTest("sets the volume to 0 if sounds are muted", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.setMutedOn();
-    var sound = AudioPlayer.playLocal(mocks.mockSoundName);
+    const sound = AudioPlayer.playLocal(mocks.mockSoundName);
 
     // Assert
     chai.expect(sound.volume).to.equal(0);
@@ -18,10 +18,10 @@ mochaLoader.addTest("sets the volume to 0 if sounds are muted", (): void => {
 
 mochaLoader.addTest("sets the volume to 1 if sounds are not muted", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
-    var sound = AudioPlayer.playLocal(mocks.mockSoundName);
+    const sound = AudioPlayer.playLocal(mocks.mockSoundName);
 
     // Assert
     chai.expect(sound.volume).to.equal(1);
@@ -29,7 +29,7 @@ mochaLoader.addTest("sets the volume to 1 if sounds are not muted", (): void => 
 
 mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type number)", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {
@@ -42,7 +42,7 @@ mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type number)", (): vo
     });
 
     // Act
-    var sound = AudioPlayer.playLocal(mocks.mockSoundName);
+    const sound = AudioPlayer.playLocal(mocks.mockSoundName);
 
     // Assert
     chai.expect(sound.getAttribute("volumeReal")).to.equal("0.5");
@@ -50,7 +50,7 @@ mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type number)", (): vo
 
 mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type function)", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {
@@ -66,7 +66,7 @@ mochaLoader.addTest("sets volumeReal to getVolumeLocal (of type function)", (): 
 
     // Act
     AudioPlayer.setMutedOn();
-    var sound = AudioPlayer.playLocal(mocks.mockSoundName);
+    const sound = AudioPlayer.playLocal(mocks.mockSoundName);
 
     // Assert
     chai.expect(sound.getAttribute("volumeReal")).to.equal("0.5");

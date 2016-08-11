@@ -6,10 +6,10 @@
 
 mochaLoader.addTest("sets the theme", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
-    var sound = AudioPlayer.playTheme(mocks.mockSoundName);
+    const sound = AudioPlayer.playTheme(mocks.mockSoundName);
 
     // Assert
     chai.expect(AudioPlayer.sounds[mocks.mockSoundName]).to.deep.equal(sound);
@@ -17,7 +17,7 @@ mochaLoader.addTest("sets the theme", (): void => {
 
 mochaLoader.addTest("sets the loop attribute to true", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
@@ -28,7 +28,7 @@ mochaLoader.addTest("sets the loop attribute to true", (): void => {
 
 mochaLoader.addTest("sets the loop attribute to false", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName, false);
@@ -39,7 +39,7 @@ mochaLoader.addTest("sets the loop attribute to false", (): void => {
 
 mochaLoader.addTest("uses default getter (of type string)", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {
@@ -63,7 +63,7 @@ mochaLoader.addTest("uses default getter (of type string)", (): void => {
 
 mochaLoader.addTest("uses default getter (of type function)", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr({
+    const AudioPlayer = mocks.mockAudioPlayr({
         directory: "Sounds",
         fileTypes: ["mp3"],
         library: {

@@ -6,7 +6,7 @@
 
 mochaLoader.addTest("throws an error if the sound doesn't exist", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Assert
     chai.expect(AudioPlayer.removeEventListeners.bind(AudioPlayer, "X")).to.throw("Unknown name given to removeEventListeners: 'X'.");
@@ -14,10 +14,10 @@ mochaLoader.addTest("throws an error if the sound doesn't exist", (): void => {
 
 mochaLoader.addTest("removes the event from the sound", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var sound = AudioPlayer.library[mocks.mockSoundName];
+    const AudioPlayer = mocks.mockAudioPlayr();
+    const sound = AudioPlayer.library[mocks.mockSoundName];
     var num = 0;
-    var increase = function () {
+    const increase = function () {
         num += 1;
     }
 
@@ -31,10 +31,10 @@ mochaLoader.addTest("removes the event from the sound", (): void => {
 
 mochaLoader.addTest("leaves events on the sound unchanged if the event didn't exist", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var sound = AudioPlayer.library[mocks.mockSoundName];
+    const AudioPlayer = mocks.mockAudioPlayr();
+    const sound = AudioPlayer.library[mocks.mockSoundName];
     var num = 0;
-    var increase = function () {
+    const increase = function () {
         num += 1;
     }
 

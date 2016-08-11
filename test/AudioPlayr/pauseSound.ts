@@ -8,10 +8,10 @@ mochaLoader.addTest("pauses the requested sound (commented out)", (): void => {
     // paused is undefined with current version of PhantomJS
     
     /*// Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
-    var sound = AudioPlayer.play(mocks.mockSoundName);
+    const sound = AudioPlayer.play(mocks.mockSoundName);
     AudioPlayer.pauseSound(sound);
 
     // Assert

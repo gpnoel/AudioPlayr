@@ -6,8 +6,8 @@
 
 mochaLoader.addTest("plays the requested sound (commented out)", (): void => {
     /*// Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var sound = AudioPlayer.library[mocks.mockSoundName];
+    const AudioPlayer = mocks.mockAudioPlayr();
+    const sound = AudioPlayer.library[mocks.mockSoundName];
 
     // Act
     AudioPlayer.playSound(sound);

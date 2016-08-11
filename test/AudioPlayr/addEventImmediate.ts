@@ -6,9 +6,9 @@
 
 mochaLoader.addTest("calls the function immediately if sound doesn't exist", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var num = 0;
-    var increase = function () {
+    const AudioPlayer = mocks.mockAudioPlayr();
+    let num = 0;
+    const increase = function () {
         num += 1;
     }
 
@@ -21,9 +21,9 @@ mochaLoader.addTest("calls the function immediately if sound doesn't exist", ():
 
 mochaLoader.addTest("calls the function immediately if the sound is paused", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var num = 0;
-    var increase = function () {
+    const AudioPlayer = mocks.mockAudioPlayr();
+    let num = 0;
+    const increase = function () {
         num += 1;
     }
 
@@ -35,18 +35,21 @@ mochaLoader.addTest("calls the function immediately if the sound is paused", ():
     chai.expect(num).to.equal(1);
 });
 
-mochaLoader.addTest("doesn't call the function if the sound is not paused and exists", (): void => {
+mochaLoader.addTest("doesn't call the function if the sound is not paused and exists", (done): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var num = 0;
-    var increase = function () {
+    const AudioPlayer = mocks.mockAudioPlayr();
+    let num = 0;
+    const increase = function () {
         num += 1;
     }
 
     // Act
-    AudioPlayer.playSound(AudioPlayer.library[mocks.mockSoundName]);
-    AudioPlayer.addEventImmediate(mocks.mockSoundName, "loadeddata", increase);
+    AudioPlayer.play(mocks.mockSoundName);
+    setTimeout(() => {
+        AudioPlayer.addEventImmediate(mocks.mockSoundName, "loadeddata", increase);
 
-    // Assert
-    chai.expect(num).to.equal(0);
+        // Assert
+        chai.expect(num).to.equal(0);
+        done();
+    }, 1);
 });

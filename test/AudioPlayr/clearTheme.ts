@@ -6,7 +6,7 @@
 
 mochaLoader.addTest("removes the theme from sounds", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
@@ -18,7 +18,7 @@ mochaLoader.addTest("removes the theme from sounds", (): void => {
 
 mochaLoader.addTest("sets the theme to undefined", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);
@@ -30,7 +30,7 @@ mochaLoader.addTest("sets the theme to undefined", (): void => {
 
 mochaLoader.addTest("sets the themeName to undefined", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Act
     AudioPlayer.playTheme(mocks.mockSoundName);

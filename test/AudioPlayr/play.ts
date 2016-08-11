@@ -8,8 +8,8 @@ mochaLoader.addTest("plays the sound if sounds are muted (commented out)", (done
     // paused is undefined in this version of PhantomJS
 
     /*// Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var sound;
+    const AudioPlayer = mocks.mockAudioPlayr();
+    const sound;
 
     // Act
     AudioPlayer.setMutedOn();
@@ -29,8 +29,8 @@ mochaLoader.addTest("plays the sound if sounds are not muted (commented out)", (
     // paused is undefined in this version of PhantomJS
 
     /*// Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
-    var sound;
+    const AudioPlayer = mocks.mockAudioPlayr();
+    const sound;
 
     // Act
     sound = AudioPlayer.play(mocks.mockSoundName);
@@ -47,7 +47,7 @@ mochaLoader.addTest("plays the sound if sounds are not muted (commented out)", (
 
 mochaLoader.addTest("throws an error if the sound doesn't exist", (): void => {
     // Arrange
-    var AudioPlayer = mocks.mockAudioPlayr();
+    const AudioPlayer = mocks.mockAudioPlayr();
 
     // Assert
     chai.expect(AudioPlayer.play.bind(AudioPlayer, "X")).to.throw("Unknown name given to AudioPlayr.play: 'X'.");
